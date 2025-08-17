@@ -283,6 +283,11 @@ function App() {
           <div className="text-center text-white/60">
             <p className="mb-2">🎊 Good luck to all participants! 🎊</p>
             <p className="text-sm">Each winner receives ₹5,000 prize money | Total Pool: ₹30,000</p>
+            <div className="mt-4 pt-4 border-t border-white/20">
+              <p className="text-xs text-white/50">
+                Imagined, Designed and Developed by <span className="font-semibold text-white/70">Abhishekh Dey</span>
+              </p>
+            </div>
           </div>
         )}
       </div>
