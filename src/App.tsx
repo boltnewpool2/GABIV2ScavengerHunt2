@@ -51,10 +51,8 @@ function App() {
     
     setShowConfetti(true);
     
-    // Stop drawing for this department if we have enough winners
-    if (currentWinners[department].length + 1 >= winnersPerDepartment[department as keyof typeof winnersPerDepartment]) {
-      setIsDrawing(prev => ({ ...prev, [department]: false }));
-    }
+    // Stop drawing for this department
+    setIsDrawing(prev => ({ ...prev, [department]: false }));
   };
 
   const saveWinnerToDatabase = async (winner: Guide) => {
