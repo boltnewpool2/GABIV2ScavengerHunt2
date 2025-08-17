@@ -4,6 +4,7 @@ import FloatingOrbs from './components/FloatingOrbs';
 import Confetti from './components/Confetti';
 import RaffleWheel from './components/RaffleWheel';
 import WinnersDashboard from './components/WinnersDashboard';
+import WinnerPopup from './components/WinnerPopup';
 import { supabase } from './lib/supabase';
 import guidesData from './data/guides.json';
 
@@ -28,6 +29,10 @@ function App() {
   const [showConfetti, setShowConfetti] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [showDashboard, setShowDashboard] = useState(false);
+  const [winnerPopup, setWinnerPopup] = useState<{ isOpen: boolean; winner: Guide | null }>({
+    isOpen: false,
+    winner: null
+  });
   const [currentWinners, setCurrentWinners] = useState<{[key: string]: Guide[]}>({
     'International Messaging': [],
     'APAC': [],
@@ -48,6 +53,9 @@ function App() {
       ...prev,
       [department]: [...prev[department], winner]
     }));
+    
+    // Show winner popup
+    setWinnerPopup({ isOpen: true, winner });
     
     setShowConfetti(true);
     
@@ -289,6 +297,13 @@ function App() {
           </div>
         )}
       </div>
+
+      {/* Winner Popup */}
+      <WinnerPopup
+        isOpen={winnerPopup.isOpen}
+        winner={winnerPopup.winner}
+        onClose={() => setWinnerPopup({ isOpen: false, winner: null })}
+      />
     </div>
   );
 }
