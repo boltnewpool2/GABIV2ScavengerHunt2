@@ -84,6 +84,7 @@ const WinnersDashboard: React.FC = () => {
   }, {} as Record<string, number>);
 
   const totalPrizePool = winners.reduce((sum, winner) => sum + winner.prize_amount, 0);
+  const remainingPrizePool = 30000 - totalPrizePool;
 
   if (loading) {
     return (
@@ -162,20 +163,28 @@ const WinnersDashboard: React.FC = () => {
       )}
 
       {/* Statistics */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
         <div className="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-4 rounded-lg">
           <div className="text-2xl font-bold">{winners.length}</div>
           <div className="text-sm opacity-90">Total Winners</div>
         </div>
         <div className="bg-gradient-to-r from-green-500 to-green-600 text-white p-4 rounded-lg">
+          <div className="text-2xl font-bold">₹{remainingPrizePool.toLocaleString()}</div>
+          <div className="text-sm opacity-90">Remaining Pool</div>
+        </div>
+        <div className="bg-gradient-to-r from-red-500 to-red-600 text-white p-4 rounded-lg">
           <div className="text-2xl font-bold">₹{totalPrizePool.toLocaleString()}</div>
-          <div className="text-sm opacity-90">Prize Pool</div>
+          <div className="text-sm opacity-90">Distributed</div>
+        </div>
+        <div className="bg-gradient-to-r from-red-500 to-red-600 text-white p-4 rounded-lg">
+          <div className="text-2xl font-bold">₹{totalPrizePool.toLocaleString()}</div>
+          <div className="text-sm opacity-90">Distributed</div>
         </div>
         <div className="bg-gradient-to-r from-purple-500 to-purple-600 text-white p-4 rounded-lg">
           <div className="text-2xl font-bold">{Object.keys(departmentStats).length}</div>
           <div className="text-sm opacity-90">Departments</div>
         </div>
-        <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white p-4 rounded-lg">
+        <div className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white p-4 rounded-lg">
           <div className="text-2xl font-bold">₹5,000</div>
           <div className="text-sm opacity-90">Per Winner</div>
         </div>

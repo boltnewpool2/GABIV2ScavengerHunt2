@@ -150,7 +150,7 @@ function App() {
             <img 
               src="/public/GABI v2 Scavenger Hunt (1).gif" 
               alt="GABI V2 Logo" 
-              className="w-48 h-32 object-cover rounded-2xl shadow-2xl border-4 border-white/20"
+              className="w-80 h-48 object-contain rounded-2xl shadow-2xl border-4 border-white/20 bg-white/10 backdrop-blur-sm p-4"
             />
           </div>
           <h1 className="text-5xl font-bold text-white mb-4 animate-pulse">
@@ -165,8 +165,12 @@ function App() {
               <div className="text-sm">Total Winners</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-green-300">₹{totalPrizePool.toLocaleString()}</div>
-              <div className="text-sm">Prize Pool</div>
+              <div className="text-2xl font-bold text-green-300">₹{(30000 - totalPrizePool).toLocaleString()}</div>
+              <div className="text-sm">Remaining Prize Pool</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-red-300">₹{totalPrizePool.toLocaleString()}</div>
+              <div className="text-sm">Distributed</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold text-blue-300">{guides.length}</div>
@@ -274,11 +278,11 @@ function App() {
           </div>
         )}
 
-        {/* Footer */
-        !showDashboard && (
+        {/* Footer */}
+        {!showDashboard && (
           <div className="text-center text-white/60">
             <p className="mb-2">🎊 Good luck to all participants! 🎊</p>
-            <p className="text-sm">Each winner receives ₹5,000 prize money</p>
+            <p className="text-sm">Each winner receives ₹5,000 prize money | Total Pool: ₹30,000</p>
           </div>
         )}
       </div>
