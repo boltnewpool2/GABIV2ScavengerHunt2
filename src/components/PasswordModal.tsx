@@ -98,7 +98,7 @@ const PasswordModal: React.FC<PasswordModalProps> = ({
         
         <div className="mt-4 p-3 bg-blue-50 rounded-lg">
           <p className="text-xs text-blue-600">
-            <strong>Note:</strong> Default password is "admin123". You can change it in the Settings.
+           
           </p>
         </div>
       </div>
